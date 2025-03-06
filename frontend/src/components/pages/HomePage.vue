@@ -98,16 +98,31 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
+// const links = ref([
+//   { name: 'YouTube', icon: '../../assets/img/shortcuts/youtube.png' },
+//   { name: 'Yahoo', icon: '../../assets/img/shortcuts/yahoo.png' },
+//   { name: 'ChatGPT', icon: '../../assets/img/shortcuts/chatgpt.png' },
+//   { name: 'GitHub', icon: '../../assets/img/shortcuts/github-logo.png' },
+//   { name: 'Gmail', icon: '../../assets/img/shortcuts/google.png' },
+//   { name: 'Discord', icon: '../../assets/img/shortcuts/discord.png' },
+//   { name: 'Tree', icon: '../../assets/img/shortcuts/tree.png' },
+//   { name: 'Hugging Face', icon: '../../assets/img/shortcuts/hugging.png' },
+//   { name: 'Docker', icon: '../../assets/img/shortcuts/docker.png' },
+// ])
+
 const links = ref([
-  { name: 'YouTube', icon: 'src/assets/img/shortcuts/youtube.png' },
-  { name: 'Yahoo', icon: 'src/assets/img/shortcuts/yahoo.png' },
-  { name: 'ChatGPT', icon: 'src/assets/img/shortcuts/chatgpt.png' },
-  { name: 'GitHub', icon: 'src/assets/img/shortcuts/github-logo.png' },
-  { name: 'Gmail', icon: 'src/assets/img/shortcuts/google.png' },
-  { name: 'Discord', icon: 'src/assets/img/shortcuts/discord.png' },
-  { name: 'Tree', icon: 'src/assets/img/shortcuts/tree.png' },
-  { name: 'Hugging Face', icon: 'src/assets/img/shortcuts/hugging.png' },
-  { name: 'Docker', icon: 'src/assets/img/shortcuts/docker.png' },
+  { name: 'YouTube', icon: new URL('@/assets/img/shortcuts/youtube.png', import.meta.url).href },
+  { name: 'Yahoo', icon: new URL('@/assets/img/shortcuts/yahoo.png', import.meta.url).href },
+  { name: 'ChatGPT', icon: new URL('@/assets/img/shortcuts/chatgpt.png', import.meta.url).href },
+  { name: 'GitHub', icon: new URL('@/assets/img/shortcuts/github-logo.png', import.meta.url).href },
+  { name: 'Gmail', icon: new URL('@/assets/img/shortcuts/google.png', import.meta.url).href },
+  { name: 'Discord', icon: new URL('@/assets/img/shortcuts/discord.png', import.meta.url).href },
+  { name: 'Tree', icon: new URL('@/assets/img/shortcuts/tree.png', import.meta.url).href },
+  {
+    name: 'Hugging Face',
+    icon: new URL('@/assets/img/shortcuts/hugging.png', import.meta.url).href,
+  },
+  { name: 'Docker', icon: new URL('@/assets/img/shortcuts/docker.png', import.meta.url).href },
 ])
 
 // control  menu span status

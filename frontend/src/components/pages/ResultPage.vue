@@ -154,8 +154,15 @@ const results = ref([])
 
 // 讀取 JSON
 onMounted(async () => {
-  const res = await fetch('src/search_dataset.json') // public 資料夾內的檔案
-  results.value = await res.json()
+  try {
+    const res = await fetch('/search_dataset.json') // public 資料夾內的檔案
+    if (!res.ok) {
+      throw new Error('Failed to fetch data')
+    }
+    results.value = await res.json()
+  } catch (err) {
+    console.error('Error:', err)
+  }
 })
 
 // 當前選中的分類索引
