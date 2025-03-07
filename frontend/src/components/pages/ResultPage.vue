@@ -157,8 +157,9 @@ const results = ref([])
 // 讀取 JSON
 onMounted(async () => {
   try {
-    const baseURL = import.meta.env.MODE === 'development' ? '' : import.meta.env.BASE_URL
-    const res = await fetch(baseURL + '/search_dataset.json') // public 資料夾內的檔案
+    const res = await fetch(
+      `${import.meta.env.VITE_BASE_URL || '/sd-searchPage/'}search_dataset.json`,
+    )
     if (!res.ok) {
       throw new Error('Failed to fetch data')
     }

@@ -4,7 +4,7 @@ import ResultPage from './components/pages/ResultPage.vue'
 import NotFoundPage from './components/pages/NotFoundPage.vue'
 
 const routes = createRouter({
-  history: createWebHistory('/sd-searchPage'),
+  history: createWebHistory(),
   routes: [
     {
       path: '/',
