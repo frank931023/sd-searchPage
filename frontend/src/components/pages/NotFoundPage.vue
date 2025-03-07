@@ -28,7 +28,6 @@ import { onMounted, ref } from 'vue'
 // 獲取 Canvas DOM
 const gameCanvas = ref(null)
 
-// 遊戲初始化
 onMounted(() => {
   if (!gameCanvas.value) return
 
@@ -39,10 +38,17 @@ onMounted(() => {
   canvas.width = 600
   canvas.height = 200
 
-  // 恐龍遊戲變數
-  let dino = { x: 50, y: 150, width: 40, height: 40, dy: 0, jumping: false }
+  // 加載圖片
+  const dinoImg = new Image()
+  dinoImg.src = new URL('@/assets/img/tyrannosaurus-rex.png', import.meta.url).href
+
+  const obstacleImg = new Image()
+  obstacleImg.src = new URL('@/assets/img/shortcuts/tree.png', import.meta.url).href
+
+  // 恐龍變數
+  let dino = { x: 50, y: 150, width: 50, height: 50, dy: 0, jumping: false }
   let obstacles = []
-  let gravity = 0.6
+  let gravity = 0.5
   let gameSpeed = 4
   let gameOver = false
 
@@ -57,7 +63,7 @@ onMounted(() => {
   // 產生障礙物
   const spawnObstacle = () => {
     if (Math.random() < 0.02) {
-      obstacles.push({ x: canvas.width, y: 160, width: 20, height: 40 })
+      obstacles.push({ x: canvas.width, y: 150, width: 30, height: 50 })
     }
   }
 
@@ -98,13 +104,11 @@ onMounted(() => {
     obstacles = obstacles.filter((obs) => obs.x > -obs.width)
 
     // 畫恐龍
-    ctx.fillStyle = 'white'
-    ctx.fillRect(dino.x, dino.y, dino.width, dino.height)
+    ctx.drawImage(dinoImg, dino.x, dino.y, dino.width, dino.height)
 
     // 畫障礙物
-    ctx.fillStyle = 'red'
     for (let obs of obstacles) {
-      ctx.fillRect(obs.x, obs.y, obs.width, obs.height)
+      ctx.drawImage(obstacleImg, obs.x, obs.y, obs.width, obs.height)
     }
 
     requestAnimationFrame(updateGame)
